@@ -10,4 +10,5 @@ internal fun Context.getCompactDrawable(drawable: Int):Drawable?= ContextCompat.
 
 internal fun AppCompatActivity.changeStatusBarColor(color: Int) {
     window.statusBarColor = getCompactColor(color)
+    window.statusBarColor = getCompactColor(color)
 }
