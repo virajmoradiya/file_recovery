@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.scanVideo.activity.VideoScanActivity">
+
+    <com.robinhood.ticker.TickerView
+        android:id="@+id/tvTapOnStartScan"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_35sdp"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_8sdp"
+        app:ticker_animationDuration="500"
+        android:fontFamily="@font/nunito_reguler"
+        android:includeFontPadding="false"
+        android:text="@string/tap_to_start_scanning"
+        android:textColor="@color/headerColor"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintEnd_toEndOf="@+id/waveView"
+        app:layout_constraintStart_toStartOf="@+id/waveView"
+        app:layout_constraintTop_toBottomOf="@+id/waveView" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        app:layout_constraintTop_toBottomOf="@id/tvTapOnStartScan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:ellipsize="middle"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:maxLines="1"
+        android:textColor="@color/headerColor"
+        android:textSize="@dimen/_11ssp"
+        android:id="@+id/tvScanPath"
+        android:visibility="invisible"
+        android:fontFamily="@font/nunito_reguler"
+        android:includeFontPadding="false"
+        android:layout_height="wrap_content"/>
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_back"
+        app:title="Scan Video"
+        app:titleTextAppearance="@style/ToolbarTitleStyle" />
+
+    <com.example.recovery.ui.widget.RippleBackground
+        android:id="@+id/waveView"
+        android:layout_width="@dimen/_120sdp"
+        app:rb_color="@color/waveAnimationColor"
+        android:layout_height="@dimen/_120sdp"
+        android:layout_marginTop="@dimen/_32sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/_55sdp"
+        android:id="@+id/ivScanVideo"
+        android:elevation="0dp"
+        android:layout_height="@dimen/_55sdp"
+        android:background="@drawable/back_circle"
+        android:backgroundTint="@color/activateColor"
+        app:layout_constraintBottom_toBottomOf="@+id/waveView"
+        app:layout_constraintEnd_toEndOf="@+id/waveView"
+        app:layout_constraintStart_toStartOf="@+id/waveView"
+        app:layout_constraintTop_toTopOf="@+id/waveView"
+        app:srcCompat="@drawable/ic_video"
+        app:tint="@color/white"
+        />
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:visibility="gone"
+        android:layout_height="@dimen/_225sdp"
+        android:background="@drawable/back_scan_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvScanPath"
+        app:layout_constraintVertical_bias="1.0">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:background="@drawable/back_main_button"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="center"
+            android:text="Ads space"
+            android:textSize="@dimen/_15ssp" />
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

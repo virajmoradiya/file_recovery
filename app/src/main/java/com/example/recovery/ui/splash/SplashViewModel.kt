@@ -10,7 +10,7 @@ class SplashViewModel :ViewModel() {
     val isReadyForExit = MutableStateFlow(true)
     init {
         viewModelScope.launch {
-            delay(1500)
+            delay(1000)
             isReadyForExit.tryEmit(false)
         }
     }

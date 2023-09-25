@@ -10,4 +10,21 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="splash_screen">#FF3700B3</color>
+    <color name="color_gray">#2C2C2C</color>
+    <color name="color_gray_800">#838383</color>
+    <color name="color_gray_700">#201F1F</color>
+    <color name="color_blue_100">#2196F3</color>
+
+
+    //custom color
+    <color name="headerColor">#15183B</color>
+    <color name="textColor">#838383</color>
+    <color name="backgroundColor">#ECEDF1</color>
+    <color name="secondaryBackgroundColor">#FFFFFF</color>
+    <color name="highlightColor">#445CFE</color>
+    <color name="iconColor">#15183B</color>
+    <color name="deActivateColor">#BEBDC5</color>
+    <color name="activateColor">#15183B</color>
+    <color name="waveAnimationColor">#2615183B</color>
+
 </resources>

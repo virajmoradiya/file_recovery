@@ -16,9 +16,6 @@ import com.example.recovery.ui.dashboard.DashboardActivity
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 
-    companion object {
-        private const val TIMER_ANIMATION: Long = 1500
-    }
 
     private val viewModel: SplashViewModel by viewModels()
     private lateinit var splashScreen: SplashScreen
@@ -30,13 +27,14 @@ class SplashActivity : AppCompatActivity() {
             val animation = splashScreenView.alphaAnimation()
 
             val animatorSet = AnimatorSet()
-            animatorSet.duration = TIMER_ANIMATION
+            animatorSet.duration = 1500
             animatorSet.interpolator = AnticipateInterpolator()
             animatorSet.playTogether(animation)
 
             animatorSet.doOnEnd {
                 splashScreenView.remove()
-                toMainActivity()
+                startActivity<DashboardActivity> { }
+                finish()
             }
             animatorSet.start()
         }
@@ -47,8 +45,5 @@ class SplashActivity : AppCompatActivity() {
     }
 
 
-    private fun toMainActivity() {
-        startActivity<DashboardActivity> { }
-        finish()
-    }
+
 }

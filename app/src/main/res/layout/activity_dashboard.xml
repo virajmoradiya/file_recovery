@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".ui.dashboard.DashboardActivity">
 
 
@@ -17,6 +16,7 @@
         android:paddingHorizontal="@dimen/_16sdp"
         android:text="@string/app_name"
         android:textSize="@dimen/_18ssp"
+        android:textColor="@color/headerColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,11 +24,13 @@
 
     <FrameLayout
         android:layout_width="0dp"
+        android:visibility="gone"
         android:layout_height="@dimen/_190sdp"
-        android:layout_marginVertical="@dimen/_15sdp"
-        android:background="@drawable/back_main_button"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/back_scan_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tvSetting"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvSetting"
         app:layout_constraintTop_toBottomOf="@+id/tvSetting"
         app:layout_constraintVertical_bias="1.0">
@@ -41,7 +43,8 @@
             android:background="@drawable/back_main_button"
             android:fontFamily="@font/nunito_bold"
             android:gravity="center"
-            android:text="Ads space"
+            android:textColor="@color/headerColor"
+            android:text="@string/ads_space"
             android:textSize="@dimen/_15ssp" />
 
     </FrameLayout>
@@ -53,9 +56,13 @@
         android:layout_marginEnd="@dimen/_15sdp"
         android:background="@drawable/back_main_button"
         android:fontFamily="@font/nunito_bold"
-        android:gravity="center"
-        android:text="Video"
-        android:textSize="@dimen/_16ssp"
+        android:drawableTop="@drawable/ic_play"
+        android:textColor="@color/headerColor"
+        android:padding="@dimen/_8sdp"
+        app:drawableTint="@color/iconColor"
+        android:gravity="bottom|center"
+        android:text="@string/video"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintBottom_toBottomOf="@+id/tvImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvImage"
@@ -69,9 +76,14 @@
         android:layout_marginTop="@dimen/_15sdp"
         android:background="@drawable/back_main_button"
         android:fontFamily="@font/nunito_bold"
-        android:gravity="center"
-        android:text="Recovered File"
-        android:textSize="@dimen/_16ssp"
+        android:gravity="center_vertical"
+        android:textColor="@color/headerColor"
+        android:padding="@dimen/_15sdp"
+        app:drawableTint="@color/iconColor"
+        android:drawableStart="@drawable/ic_recoverd"
+        android:drawablePadding="@dimen/_12sdp"
+        android:text="@string/recovered_file"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintEnd_toEndOf="@+id/tvVideo"
         app:layout_constraintStart_toStartOf="@+id/tvImage"
         app:layout_constraintTop_toBottomOf="@+id/tvImage" />
@@ -84,9 +96,14 @@
         android:layout_marginTop="@dimen/_15sdp"
         android:background="@drawable/back_main_button"
         android:fontFamily="@font/nunito_bold"
-        android:gravity="center"
-        android:text="Setting"
-        android:textSize="@dimen/_16ssp"
+        android:gravity="center_vertical"
+        android:text="@string/setting"
+        android:textColor="@color/headerColor"
+        android:drawablePadding="@dimen/_12sdp"
+        android:padding="@dimen/_15sdp"
+        app:drawableTint="@color/iconColor"
+        android:drawableStart="@drawable/ic_settings"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintEnd_toEndOf="@+id/tvVideo"
         app:layout_constraintStart_toStartOf="@+id/tvImage"
         app:layout_constraintTop_toBottomOf="@+id/tvRecoveredFile" />
@@ -100,9 +117,14 @@
         android:layout_marginHorizontal="@dimen/_15sdp"
         android:background="@drawable/back_main_button"
         android:fontFamily="@font/nunito_bold"
-        android:gravity="center"
-        android:text="Image"
-        android:textSize="@dimen/_16ssp"
+        android:drawableTop="@drawable/ic_scan_image"
+        android:padding="@dimen/_8sdp"
+        app:drawableTint="@color/iconColor"
+        android:gravity="bottom|center"
+        android:textColor="@color/headerColor"
+        android:text="@string/photo"
+        android:includeFontPadding="false"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintEnd_toStartOf="@+id/tvVideo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appCompatTextView5" />
