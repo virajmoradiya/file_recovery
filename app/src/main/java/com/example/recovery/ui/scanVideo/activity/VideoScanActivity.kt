@@ -1,7 +1,6 @@
 package com.example.recovery.ui.scanVideo.activity
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
@@ -12,7 +11,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.recovery.R
 import com.example.recovery.databinding.ActivityVideoScanBinding
 import com.example.recovery.extension.startActivity
-import com.example.recovery.extension.visible
 import com.example.recovery.extension.visibleIf
 import com.example.recovery.ui.scanVideo.ScanVideoViewModel
 import com.example.recovery.utils.Resources
