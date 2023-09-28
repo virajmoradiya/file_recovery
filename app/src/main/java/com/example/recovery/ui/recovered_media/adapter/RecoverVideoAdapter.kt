@@ -28,7 +28,9 @@ class RecoverVideoAdapter(private val listener:View.OnClickListener?=null) : Lis
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.binding.apply {
             val item = currentList[holder.adapterPosition]
-            ivVideo.loadImageFile(item.file)
+            ivVideo.loadImageFile(item.file){
+                ivDefaultVideo.gone()
+            }
             ivSelect.gone()
             ivUnSelect.gone()
 

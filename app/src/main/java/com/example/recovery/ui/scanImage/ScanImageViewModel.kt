@@ -1,6 +1,5 @@
 package com.example.recovery.ui.scanImage
 
-import android.R.attr.data
 import android.os.Environment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -28,11 +27,12 @@ class ScanImageViewModel : ViewModel() {
     private val _scanPathMutableStateFlow = MutableStateFlow<String>("")
     val scanPathSharedFlow = _scanPathMutableStateFlow.asSharedFlow()
 
-    private val _scanImageMutableStateFlow = MutableStateFlow<Resources<MutableList<FileModel>>>(Resources.Idle(""))
+    private val _scanImageMutableStateFlow =
+        MutableStateFlow<Resources<MutableList<FileModel>>>(Resources.Idle(""))
     val scanImageSharedFlow = _scanImageMutableStateFlow.asSharedFlow()
 
-     private val _recoverImageMutableStateFlow =
-        MutableStateFlow<Resources<Boolean>>(Resources.Idle("",false))
+    private val _recoverImageMutableStateFlow =
+        MutableStateFlow<Resources<Boolean>>(Resources.Idle("", false))
     val recoverImageSharedFlow = _recoverImageMutableStateFlow.asSharedFlow()
 
     var isRecoverProgressOn = false
@@ -72,7 +72,10 @@ class ScanImageViewModel : ViewModel() {
                 imageList.clear()
                 imageList.addAll(scanImageList)
                 delay(500)
-                _scanImageMutableStateFlow.tryEmit(Resources.Success(imageList))
+                if (imageList.isEmpty())
+                    _scanImageMutableStateFlow.tryEmit(Resources.Error("", imageList))
+                else
+                    _scanImageMutableStateFlow.tryEmit(Resources.Success(imageList))
             }
         }
     }

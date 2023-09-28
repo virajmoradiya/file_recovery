@@ -19,12 +19,12 @@
     //custom color
     <color name="headerColor">#15183B</color>
     <color name="textColor">#838383</color>
-    <color name="backgroundColor">#ECEDF1</color>
+    <color name="backgroundColor">#FFFFFF</color>
     <color name="secondaryBackgroundColor">#FFFFFF</color>
     <color name="highlightColor">#445CFE</color>
-    <color name="iconColor">#15183B</color>
+    <color name="iconColor">#445CFE</color>
     <color name="deActivateColor">#BEBDC5</color>
-    <color name="activateColor">#15183B</color>
+    <color name="activateColor">#445CFE</color>
     <color name="waveAnimationColor">#2615183B</color>
 
 </resources>

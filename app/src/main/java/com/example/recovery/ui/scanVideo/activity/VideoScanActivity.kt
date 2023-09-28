@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.recovery.R
 import com.example.recovery.databinding.ActivityVideoScanBinding
+import com.example.recovery.extension.invisible
 import com.example.recovery.extension.startActivity
 import com.example.recovery.extension.visibleIf
 import com.example.recovery.ui.scanVideo.ScanVideoViewModel
@@ -48,6 +49,12 @@ class VideoScanActivity : AppCompatActivity(), View.OnClickListener {
 
                         is Resources.Idle -> if (!uiState.message.isNullOrBlank()) {
                             binding.tvTapOnStartScan.text = "Preparing..."
+                        }
+
+                        is Resources.Error ->  {
+                            binding.tvTapOnStartScan.isEnabled = false
+                            binding.tvTapOnStartScan.text = "There is no videos found"
+                            binding.tvScanPath.invisible()
                         }
                     }
                 }

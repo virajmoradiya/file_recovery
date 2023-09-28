@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recovery.databinding.ItemVideoBinding
+import com.example.recovery.extension.gone
 import com.example.recovery.extension.invisible
 import com.example.recovery.extension.loadImageFile
 import com.example.recovery.extension.visible
@@ -25,7 +26,9 @@ class VideoAdapter(private val listener:View.OnClickListener?=null) : ListAdapte
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.binding.apply {
             val item = currentList[holder.adapterPosition]
-            ivVideo.loadImageFile(item.file)
+            ivVideo.loadImageFile(item.file){
+                ivDefaultVideo.gone()
+            }
             if (item.isSelected) {
                 ivSelect.visible()
                 ivUnSelect.invisible()

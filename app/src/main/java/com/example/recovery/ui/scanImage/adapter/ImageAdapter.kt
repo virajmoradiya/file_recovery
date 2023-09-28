@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recovery.databinding.ItemPhotoBinding
+import com.example.recovery.extension.gone
 import com.example.recovery.extension.invisible
 import com.example.recovery.extension.loadImageFile
 import com.example.recovery.extension.visible
@@ -23,7 +24,9 @@ class ImageAdapter(private val listener:View.OnClickListener?=null) : ListAdapte
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.binding.apply {
             val item = currentList[holder.adapterPosition]
-            ivImage.loadImageFile(item.file)
+            ivImage.loadImageFile(item.file){
+                ivDefaultImage.gone()
+            }
             if (item.isSelected) {
                 ivSelect.visible()
                 ivUnSelect.invisible()

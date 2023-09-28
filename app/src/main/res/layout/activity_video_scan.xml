@@ -67,14 +67,13 @@
         android:id="@+id/ivScanVideo"
         android:elevation="0dp"
         android:layout_height="@dimen/_55sdp"
-        android:background="@drawable/back_circle"
-        android:backgroundTint="@color/activateColor"
         app:layout_constraintBottom_toBottomOf="@+id/waveView"
         app:layout_constraintEnd_toEndOf="@+id/waveView"
         app:layout_constraintStart_toStartOf="@+id/waveView"
         app:layout_constraintTop_toTopOf="@+id/waveView"
         app:srcCompat="@drawable/ic_video"
-        app:tint="@color/white"
+        android:background="@drawable/back_circle"
+        app:tint="@color/highlightColor"
         />
 
     <FrameLayout
@@ -93,8 +92,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="gone"
-            android:background="@drawable/back_main_button"
             android:fontFamily="@font/nunito_bold"
             android:gravity="center"
             android:text="Ads space"

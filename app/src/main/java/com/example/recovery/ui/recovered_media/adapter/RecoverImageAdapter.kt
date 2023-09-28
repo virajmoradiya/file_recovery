@@ -28,7 +28,9 @@ class RecoverImageAdapter(private val listener:View.OnClickListener?=null) : Lis
         holder.binding.apply {
             val item = currentList[holder.adapterPosition]
             Log.i("acac", "onBindViewHolder: "+item.file.name)
-            ivImage.loadImageFile(item.file)
+            ivImage.loadImageFile(item.file){
+                ivDefaultImage.gone()
+            }
             ivSelect.gone()
             ivUnSelect.gone()
             root.addBounceAnim()

@@ -1,8 +1,9 @@
 package com.example.recovery.ui.scanImage.activity
 
-import android.graphics.Color
+import android.app.Dialog
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -22,8 +23,8 @@ import com.example.recovery.ui.scanImage.adapter.ImageAdapter
 import com.example.recovery.utils.Resources
 import com.robinhood.ticker.TickerUtils
 import com.robinhood.ticker.TickerView
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
 
 class ShowScanImageActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -39,6 +40,18 @@ class ShowScanImageActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
+    private val progressDialog by lazy {
+        Dialog(this).apply {
+            setContentView(R.layout.layout_progress_dialog)
+            window?.setBackgroundDrawable(getCompactDrawable(R.drawable.back_dialog))
+            window?.setLayout(
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.WRAP_CONTENT
+            )
+        }
+    }
+
 
     private lateinit var binding: ActivityShowScanImageBinding
 
@@ -78,9 +91,9 @@ class ShowScanImageActivity : AppCompatActivity(), View.OnClickListener {
                 viewModel.recoverImageSharedFlow.collect {data->
                     when (data) {
                         is Resources.Idle -> {}
-                        is Resources.Progress -> binding.progressBar.visible()
+                        is Resources.Progress ->  {}
                         is Resources.Success -> {
-                            binding.progressBar.gone()
+                            progressDialog.dismiss()
                             if (data.data!!) {
                                 toast("Photo recover successfully")
                                val list =imageAdapter.currentList.map { it.apply { isSelected = false }}
@@ -89,6 +102,8 @@ class ShowScanImageActivity : AppCompatActivity(), View.OnClickListener {
                             } else
                                 toast("Something went wrong")
                         }
+
+                        else -> {}
                     }
                 }
             }
@@ -98,12 +113,16 @@ class ShowScanImageActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.tvRecoverCounter -> {
-                viewModel.recoverImageFile(imageAdapter.currentList.filter { it.isSelected })
-                recoverFileCounter = 0
-                binding.tvRecoverCounter.apply {
-                    text = "Recover($recoverFileCounter)"
-                    isEnabled = false
-                    activateOrDeActivate()
+                progressDialog.show()
+                lifecycleScope.launch {
+                    delay(2000)
+                    viewModel.recoverImageFile(imageAdapter.currentList.filter { it.isSelected })
+                    recoverFileCounter = 0
+                    binding.tvRecoverCounter.apply {
+                        text = "Recover($recoverFileCounter)"
+                        isEnabled = false
+                        activateOrDeActivate()
+                    }
                 }
             }
         }

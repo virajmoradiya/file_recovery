@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.recovered.RecoveredActivity">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView8"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:ellipsize="end"
+        android:fontFamily="@font/nunito_bold"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:paddingStart="@dimen/_12sdp"
+        android:text="-: Recovered Photos :-"
+        android:textColor="@color/headerColor"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_back"
+        app:title="Result"
+        app:titleTextAppearance="@style/ToolbarTitleStyle" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/back_stroke_file_detail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvScanPath"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_33sdp"
+            android:background="@drawable/back_scan_bottom"
+            android:backgroundTint="@color/highlightColor"
+            android:ellipsize="end"
+            android:fontFamily="@font/nunito_semi_bold"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:paddingStart="@dimen/_12sdp"
+            android:text="@string/recovered_photos_details"
+            android:textColor="@color/backgroundColor"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:paddingStart="@dimen/_12sdp"
+            android:text="Status :"
+            android:textColor="@color/headerColor"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvScanPath" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView4"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_24sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/nunito_semi_bold"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text=" Success"
+            android:textColor="@color/headerColor"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView2"
+            app:layout_constraintStart_toEndOf="@+id/appCompatTextView2"
+            app:layout_constraintTop_toTopOf="@+id/appCompatTextView2" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView3"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_24sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:paddingStart="@dimen/_12sdp"
+            android:text="Number of photos :"
+            android:textColor="@color/headerColor"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView6"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_24sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/nunito_semi_bold"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textColor="@color/headerColor"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView3"
+            app:layout_constraintStart_toEndOf="@+id/appCompatTextView3"
+            app:layout_constraintTop_toTopOf="@+id/appCompatTextView3"
+            tools:text=" 4" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView7"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:paddingStart="@dimen/_12sdp"
+            android:text="Saved Folder : "
+            android:textColor="@color/headerColor"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/nunito_semi_bold"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:minHeight="@dimen/_24sdp"
+            android:textColor="@color/headerColor"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/appCompatTextView7"
+            app:layout_constraintTop_toTopOf="@+id/appCompatTextView7"
+            tools:text="4" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/_24sdp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView8"
+        app:spanCount="3"
+        tools:listitem="@layout/item_photo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

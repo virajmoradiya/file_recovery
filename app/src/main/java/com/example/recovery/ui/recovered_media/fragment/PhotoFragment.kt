@@ -50,6 +50,8 @@ class PhotoFragment : Fragment(R.layout.fragment_photo) {
                             binding.rvPhoto.adapter = recoverImageAdapter
 
                         }
+
+                        else -> {}
                     }
                 }
             }

@@ -39,12 +39,10 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
         binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
         binding.tvSuggestion.setOnClickListener(this)
         binding.tvShare.setOnClickListener(this)
-        binding.tvTerms.setOnClickListener(this)
         binding.tvPrivacy.setOnClickListener(this)
 
         binding.tvSuggestion.addBounceAnim()
         binding.tvShare.addBounceAnim()
-        binding.tvTerms.addBounceAnim()
         binding.tvPrivacy .addBounceAnim()
     }
 
@@ -52,7 +50,6 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.tvSuggestion -> composeEmail()
             R.id.tvShare -> shareApp()
-            R.id.tvTerms -> openWebUrl(getString(R.string.url_terms_condition))
             R.id.tvPrivacy -> openWebUrl(getString(R.string.url_privacy_policy))
         }
     }

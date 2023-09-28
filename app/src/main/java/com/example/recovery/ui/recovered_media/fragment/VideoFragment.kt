@@ -50,6 +50,8 @@ class VideoFragment : Fragment(R.layout.fragment_video) {
                             binding.rvVideo.adapter = recoverVideoAdapter
 
                         }
+
+                        else -> {}
                     }
                 }
             }

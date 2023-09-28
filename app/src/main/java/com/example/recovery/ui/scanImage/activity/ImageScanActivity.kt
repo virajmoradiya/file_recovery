@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.recovery.R
 import com.example.recovery.databinding.ActivityImageScanBinding
+import com.example.recovery.extension.invisible
 import com.example.recovery.extension.startActivity
 import com.example.recovery.extension.visibleIf
 import com.example.recovery.ui.scanImage.ScanImageViewModel
@@ -44,11 +45,16 @@ class ImageScanActivity : AppCompatActivity(), View.OnClickListener {
                     when (uiState) {
                         is Resources.Success -> startActivity<ShowScanImageActivity> { finish() }
 
-                        is Resources.Progress -> binding.tvTapOnStartScan.text =
-                            "${uiState.count}  Images "
+                        is Resources.Progress -> binding.tvTapOnStartScan.text = "${uiState.count}  Images "
 
                         is Resources.Idle -> if (!uiState.message.isNullOrBlank()) {
                             binding.tvTapOnStartScan.text = "Preparing..."
+                        }
+
+                        is Resources.Error ->  {
+                            binding.tvTapOnStartScan.isEnabled = false
+                            binding.tvTapOnStartScan.text = "There is no photos found"
+                            binding.tvScanPath.invisible()
                         }
                     }
                 }

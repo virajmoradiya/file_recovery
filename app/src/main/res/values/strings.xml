@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">File Recovery</string>
     <string name="tap_to_start_scanning">Tap to start scanning</string>
-    <string name="image">Image</string>
-    <string name="video">Video</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="image">Images</string>
+    <string name="video">Videos</string>
+    <string name="recovered_file">Recovered Files</string>
+    <string name="setting">Settings</string>
+    <string name="photo">Photos</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ads_space">Ads space</string>
     <string name="app_need_the_storage_permission_to_provide_necessary_services">App requires the storage permission to provide necessary services.</string>
@@ -21,7 +23,7 @@
     <string name="url_terms_condition">https://www.google.com/</string>
     <string name="url_privacy_policy">https://www.google.com/</string>
     <string name="email">xyz@gmail.com</string>
-    <string name="recovered_file">Recovered File</string>
-    <string name="setting">Setting</string>
-    <string name="photo">Photo</string>
+    <string name="file_recovering">File recovering...</string>
+    <string name="recovered_photos_details">Recovered Photos details</string>
+
 </resources>

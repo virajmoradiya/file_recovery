@@ -1,6 +1,5 @@
 package com.example.recovery.ui.scanVideo
 
-import android.R.attr.data
 import android.os.Environment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -25,14 +24,15 @@ class ScanVideoViewModel : ViewModel() {
         var videoList = mutableListOf<FileModel>()
     }
 
-    private val _scanPathMutableStateFlow = MutableStateFlow<String>("")
+    private val _scanPathMutableStateFlow = MutableStateFlow("")
     val scanPathSharedFlow = _scanPathMutableStateFlow.asSharedFlow()
 
-    private val _scanVideoMutableStateFlow = MutableStateFlow<Resources<MutableList<FileModel>>>(Resources.Idle(""))
+    private val _scanVideoMutableStateFlow =
+        MutableStateFlow<Resources<MutableList<FileModel>>>(Resources.Idle(""))
     val scanVideoSharedFlow = _scanVideoMutableStateFlow.asSharedFlow()
 
-     private val _recoverVideoMutableStateFlow =
-        MutableStateFlow<Resources<Boolean>>(Resources.Idle("",false))
+    private val _recoverVideoMutableStateFlow =
+        MutableStateFlow<Resources<Boolean>>(Resources.Idle("", false))
     val recoverVideoSharedFlow = _recoverVideoMutableStateFlow.asSharedFlow()
 
     var isRecoverProgressOn = false
@@ -72,7 +72,10 @@ class ScanVideoViewModel : ViewModel() {
                 videoList.clear()
                 videoList.addAll(scanVideoList)
                 delay(500)
-                _scanVideoMutableStateFlow.tryEmit(Resources.Success(videoList))
+                if (videoList.isEmpty())
+                    _scanVideoMutableStateFlow.tryEmit(Resources.Error("", videoList))
+                else
+                    _scanVideoMutableStateFlow.tryEmit(Resources.Success(videoList))
             }
         }
     }
