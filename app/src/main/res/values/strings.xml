@@ -25,5 +25,10 @@
     <string name="email">xyz@gmail.com</string>
     <string name="file_recovering">File recovering...</string>
     <string name="recovered_photos_details">Recovered Photos details</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="are_you_sure_want_to_exit_app">Are you sure want to exit app?</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="exit_app">Exit App</string>
 
 </resources>

@@ -39,24 +39,31 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
         binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
         binding.tvSuggestion.setOnClickListener(this)
         binding.tvShare.setOnClickListener(this)
+        binding.tvRateUs.setOnClickListener(this)
         binding.tvPrivacy.setOnClickListener(this)
 
         binding.tvSuggestion.addBounceAnim()
         binding.tvShare.addBounceAnim()
-        binding.tvPrivacy .addBounceAnim()
+        binding.tvRateUs.addBounceAnim()
+        binding.tvPrivacy.addBounceAnim()
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.tvSuggestion -> composeEmail()
             R.id.tvShare -> shareApp()
+            R.id.tvRateUs -> openWebUrl("market://details?id=$packageName")
             R.id.tvPrivacy -> openWebUrl(getString(R.string.url_privacy_policy))
         }
     }
 
     private fun openWebUrl(url: String) {
-        val sendIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        startActivity(sendIntent)
+        try {
+            val sendIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(sendIntent)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     private fun shareApp() {
@@ -77,7 +84,7 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
     private fun composeEmail() {
         try {
             val intent = Intent(Intent.ACTION_SENDTO)
-            intent.data = Uri.parse("mailto:"+getString(R.string.email))
+            intent.data = Uri.parse("mailto:" + getString(R.string.email))
             startActivity(intent)
         } catch (e: Exception) {
             e.printStackTrace()

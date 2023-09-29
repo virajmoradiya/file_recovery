@@ -12,12 +12,13 @@ import android.os.Environment
 import android.provider.Settings
 import android.view.View
 import android.view.WindowManager
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.example.recovery.R
 import com.example.recovery.databinding.ActivityDashboardBinding
+import com.example.recovery.databinding.DialogExitBinding
 import com.example.recovery.databinding.DialogPermissionPermanetlyBinding
 import com.example.recovery.extension.addBounceAnim
-import com.example.recovery.extension.changeStatusBarColor
 import com.example.recovery.extension.getCompactDrawable
 import com.example.recovery.extension.hasPermissions
 import com.example.recovery.extension.startActivity
@@ -27,11 +28,11 @@ import com.example.recovery.ui.scanImage.activity.ImageScanActivity
 import com.example.recovery.ui.scanVideo.activity.VideoScanActivity
 import com.example.recovery.ui.settings.SettingActivity
 import com.example.recovery.utils.Constant
+import com.example.recovery.utils.InAppUpdate
 import com.fondesa.kpermissions.allGranted
 import com.fondesa.kpermissions.anyPermanentlyDenied
 import com.fondesa.kpermissions.anyShouldShowRationale
 import com.fondesa.kpermissions.extension.permissionsBuilder
-import com.github.hariprasanths.bounceview.BounceView
 
 
 class DashboardActivity : AppCompatActivity(), View.OnClickListener {
@@ -45,6 +46,8 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         permissionsBuilder(permissionList.first(), *permissionList.toTypedArray()).build()
     }
 
+    private val inAppUpdate by lazy { InAppUpdate(this) }
+
     private var view: View? = null
 
 
@@ -56,6 +59,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun intiView() {
+        onBackPressedDispatcher.addCallback {
+            showExitDialog()
+        }
+
         binding.tvVideo.addBounceAnim()
         binding.tvRecoveredFile.addBounceAnim()
         binding.tvSetting.addBounceAnim()
@@ -75,12 +82,31 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    private fun showExitDialog() {
+        val dialogBinding = DialogExitBinding.inflate(layoutInflater)
+        val dialog = Dialog(this)
+        dialog.setContentView(dialogBinding.root)
+        dialog.window?.setBackgroundDrawable(getCompactDrawable(R.drawable.back_dialog))
+        dialog.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.85).toInt(),
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+
+        dialogBinding.btnYes.setOnClickListener {
+            dialog.dismiss()
+            finishAffinity()
+        }
+        dialogBinding.btnCancel.setOnClickListener { dialog.dismiss() }
+        dialog.show()
+    }
+
     private fun showPermanentlyDeniedDialog(isForManagerStorage: Boolean = false) {
         val binding = DialogPermissionPermanetlyBinding.inflate(layoutInflater)
         val dialog = Dialog(this)
         dialog.setContentView(binding.root)
         if (isForManagerStorage) {
-            binding.tvPermissionMsg.text = getString(R.string.app_need_the_manage_storage_permission_to_provide_necessary_services)
+            binding.tvPermissionMsg.text =
+                getString(R.string.app_need_the_manage_storage_permission_to_provide_necessary_services)
         }
         dialog.window?.apply {
             setBackgroundDrawable(getCompactDrawable(R.drawable.back_dialog))
@@ -148,6 +174,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        inAppUpdate.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1001 && resultCode == RESULT_OK) {
             if (hasPermissions(permissionList)) {
                 navigateToOtherScreen()
@@ -168,5 +195,16 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        inAppUpdate.onResume()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        inAppUpdate.onDestroy()
+    }
+
 
 }

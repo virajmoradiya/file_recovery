@@ -97,5 +97,10 @@ dependencies {
     implementation ("com.github.fondesa:kpermissions:3.4.0")
     implementation ("com.github.fondesa:kpermissions-coroutines:3.4.0")
 
+    //rating & In-app update
+    implementation("com.google.android.play:review-ktx:2.0.1")
+    implementation("com.google.android.play:app-update-ktx:2.1.0")
+
+
 
 }

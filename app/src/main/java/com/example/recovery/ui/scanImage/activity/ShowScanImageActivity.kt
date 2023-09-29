@@ -15,12 +15,15 @@ import com.example.recovery.databinding.ActivityShowScanImageBinding
 import com.example.recovery.extension.getCompactColor
 import com.example.recovery.extension.getCompactDrawable
 import com.example.recovery.extension.gone
+import com.example.recovery.extension.startActivity
 import com.example.recovery.extension.toast
 import com.example.recovery.extension.visible
 import com.example.recovery.model.FileModel
+import com.example.recovery.ui.recovered.RecoveredActivity
 import com.example.recovery.ui.scanImage.ScanImageViewModel
 import com.example.recovery.ui.scanImage.adapter.ImageAdapter
 import com.example.recovery.utils.Resources
+import com.google.gson.Gson
 import com.robinhood.ticker.TickerUtils
 import com.robinhood.ticker.TickerView
 import kotlinx.coroutines.delay
@@ -95,10 +98,14 @@ class ShowScanImageActivity : AppCompatActivity(), View.OnClickListener {
                         is Resources.Success -> {
                             progressDialog.dismiss()
                             if (data.data!!) {
+                                startActivity<RecoveredActivity> { putExtra("fileList",Gson().toJson(imageAdapter.currentList.filter { it.isSelected })) }
                                 toast("Photo recover successfully")
-                               val list =imageAdapter.currentList.map { it.apply { isSelected = false }}
-                                imageAdapter.submitList(list.toMutableList())
-                                imageAdapter.notifyDataSetChanged()
+                                lifecycleScope.launch {
+                                  delay(1500)
+                                  val list =imageAdapter.currentList.map { it.apply { isSelected = false }}
+                                  imageAdapter.submitList(list.toMutableList())
+                                  imageAdapter.notifyDataSetChanged()
+                              }
                             } else
                                 toast("Something went wrong")
                         }
@@ -115,7 +122,7 @@ class ShowScanImageActivity : AppCompatActivity(), View.OnClickListener {
             R.id.tvRecoverCounter -> {
                 progressDialog.show()
                 lifecycleScope.launch {
-                    delay(2000)
+                    delay(1500)
                     viewModel.recoverImageFile(imageAdapter.currentList.filter { it.isSelected })
                     recoverFileCounter = 0
                     binding.tvRecoverCounter.apply {

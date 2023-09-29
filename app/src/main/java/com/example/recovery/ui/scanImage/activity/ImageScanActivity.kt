@@ -29,7 +29,6 @@ class ImageScanActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityImageScanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.waveView.startRippleAnimation()
         binding.tvTapOnStartScan.setCharacterLists(TickerUtils.provideNumberList())
 
         initToolbar()
@@ -37,7 +36,6 @@ class ImageScanActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun initView() {
-        binding.ivScanImage.setOnClickListener(this)
         binding.tvTapOnStartScan.setOnClickListener(this)
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
@@ -85,7 +83,7 @@ class ImageScanActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
-            R.id.ivScanImage, R.id.tvTapOnStartScan -> viewModel.startScanning()
+            R.id.tvTapOnStartScan -> viewModel.startScanning()
             else -> {}
         }
     }

@@ -28,7 +28,6 @@ class VideoScanActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityVideoScanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.waveView.startRippleAnimation()
         binding.tvTapOnStartScan.setCharacterLists(TickerUtils.provideNumberList())
 
         initToolbar()
@@ -36,7 +35,6 @@ class VideoScanActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun initView() {
-        binding.ivScanVideo.setOnClickListener(this)
         binding.tvTapOnStartScan.setOnClickListener(this)
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
@@ -85,7 +83,7 @@ class VideoScanActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
-            R.id.ivScanVideo, R.id.tvTapOnStartScan -> viewModel.startScanning()
+           R.id.tvTapOnStartScan -> viewModel.startScanning()
             else -> {}
         }
     }

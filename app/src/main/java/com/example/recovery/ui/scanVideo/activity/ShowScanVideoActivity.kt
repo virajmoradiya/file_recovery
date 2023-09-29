@@ -16,12 +16,15 @@ import com.example.recovery.databinding.ActivityShowScanVideoBinding
 import com.example.recovery.extension.getCompactColor
 import com.example.recovery.extension.getCompactDrawable
 import com.example.recovery.extension.gone
+import com.example.recovery.extension.startActivity
 import com.example.recovery.extension.toast
 import com.example.recovery.extension.visible
 import com.example.recovery.model.FileModel
+import com.example.recovery.ui.recovered.RecoveredActivity
 import com.example.recovery.ui.scanVideo.ScanVideoViewModel
 import com.example.recovery.ui.scanVideo.adapter.VideoAdapter
 import com.example.recovery.utils.Resources
+import com.google.gson.Gson
 import com.robinhood.ticker.TickerUtils
 import com.robinhood.ticker.TickerView
 import kotlinx.coroutines.delay
@@ -95,10 +98,14 @@ class ShowScanVideoActivity : AppCompatActivity(), View.OnClickListener {
                         is Resources.Success -> {
                             progressDialog.dismiss()
                             if (data.data!!) {
+                                startActivity<RecoveredActivity> { putExtra("fileList", Gson().toJson(videoAdapter.currentList.filter { it.isSelected })) }
                                 toast("Video recover successfully")
-                                val list = videoAdapter.currentList.map { it.apply { isSelected = false } }
-                                videoAdapter.submitList(list.toMutableList())
-                                videoAdapter.notifyDataSetChanged()
+                                lifecycleScope.launch {
+                                    delay(1500)
+                                    val list = videoAdapter.currentList.map { it.apply { isSelected = false } }
+                                    videoAdapter.submitList(list.toMutableList())
+                                    videoAdapter.notifyDataSetChanged()
+                                }
 
                             } else
                                 toast("Something went wrong")
@@ -116,7 +123,7 @@ class ShowScanVideoActivity : AppCompatActivity(), View.OnClickListener {
             R.id.tvRecoverCounter -> {
                 progressDialog.show()
                 lifecycleScope.launch {
-                    delay(2000)
+                    delay(1500)
                     viewModel.recoverVideoFile(videoAdapter.currentList.filter { it.isSelected })
                     recoverFileCounter = 0
                     binding.tvRecoverCounter.apply {
