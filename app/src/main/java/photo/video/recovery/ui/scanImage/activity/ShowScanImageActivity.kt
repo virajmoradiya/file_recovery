@@ -14,10 +14,8 @@ import photo.video.recovery.R
 import photo.video.recovery.databinding.ActivityShowScanImageBinding
 import photo.video.recovery.extension.getCompactColor
 import photo.video.recovery.extension.getCompactDrawable
-import photo.video.recovery.extension.gone
 import photo.video.recovery.extension.startActivity
 import photo.video.recovery.extension.toast
-import photo.video.recovery.extension.visible
 import photo.video.recovery.model.FileModel
 import photo.video.recovery.ui.recovered.RecoveredActivity
 import photo.video.recovery.ui.scanImage.ScanImageViewModel
@@ -28,6 +26,7 @@ import com.robinhood.ticker.TickerUtils
 import com.robinhood.ticker.TickerView
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import photo.video.recovery.utils.Constant
 
 class ShowScanImageActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -98,7 +97,9 @@ class ShowScanImageActivity : AppCompatActivity(), View.OnClickListener {
                         is Resources.Success -> {
                             progressDialog.dismiss()
                             if (data.data!!) {
-                                startActivity<RecoveredActivity> { putExtra("fileList",Gson().toJson(imageAdapter.currentList.filter { it.isSelected })) }
+                                Constant.recoveryFileList.clear()
+                                Constant.recoveryFileList.addAll(imageAdapter.currentList.filter { it.isSelected })
+                                startActivity<RecoveredActivity> { }
                                 toast("Photo recover successfully")
                                 lifecycleScope.launch {
                                   delay(1500)

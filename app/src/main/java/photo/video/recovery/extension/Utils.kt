@@ -20,7 +20,7 @@ internal fun AppCompatActivity.changeStatusBarColor(color: Int) {
     window.statusBarColor = getCompactColor(color)
 }
 
-internal fun File.isImageOrGifFile(): Boolean  = kotlin.run { name.endsWith("png")||name.endsWith("jpg")||name.endsWith("jpeg")||name.endsWith(".gif") }
+internal fun File.isImageOrGifFile(): Boolean  = kotlin.run { name.endsWith("png")||name.endsWith("jpg")||name.endsWith("jpeg")||name.endsWith("gif") }
 
 internal fun File.isVideoFile(): Boolean  = kotlin.run { name.endsWith("mp4")||name.endsWith("mkv")||name.endsWith("mov") }
 

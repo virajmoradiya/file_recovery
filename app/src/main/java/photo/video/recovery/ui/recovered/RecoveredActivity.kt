@@ -3,11 +3,9 @@ package photo.video.recovery.ui.recovered
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import photo.video.recovery.databinding.ActivityRecoveredBinding
-import photo.video.recovery.extension.isImageOrGifFile
 import photo.video.recovery.extension.startActivity
 import photo.video.recovery.model.FileModel
 import photo.video.recovery.ui.recovered_media.activity.ShowMediaActivity
@@ -17,6 +15,7 @@ import photo.video.recovery.utils.Constant
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import photo.video.recovery.extension.isVideoFile
 
 class RecoveredActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -43,11 +42,6 @@ class RecoveredActivity : AppCompatActivity(), View.OnClickListener {
                             this@RecoveredActivity,
                             task.result
                         ).addOnCompleteListener { }
-                    } else {
-                        Log.w(
-                            "TAG",
-                            "There was a problem requesting the review flow ${task.exception}"
-                        )
                     }
                 }
         }
@@ -57,25 +51,22 @@ class RecoveredActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
-        val fileList = Gson().fromJson<List<FileModel>>(
-            intent.getStringExtra("fileList"),
-            object : TypeToken<List<FileModel>>() {}.type
-        )
+        val fileList = Constant.recoveryFileList
         if (fileList.isEmpty())
             return
 
 
-        val isImage = fileList.first().file.isImageOrGifFile()
+        val isVideo = fileList.first().file.isVideoFile()
 
-        val noPhotos = "Number of ${if (isImage) "Photos" else "Videos"} :"
+        val noPhotos = "Number of ${if (isVideo) "Videos" else "Photos"} :"
         binding.txtNoPhotos.text = noPhotos
         binding.tvFileCount.text = fileList.size.toString()
         binding.tvFolderPath.text =
-            "Download/${Constant.APP_NAME}/${if (isImage) Constant.IMAGE_FOLDER else Constant.VIDEO_FOLDER}"
-        binding.tvSubTitle.text = "Recovered ${if (isImage) "Photos" else "Videos"} details"
-        binding.tvRecoveredTitle.text = "-: Recovered ${if (isImage) "Photos" else "Videos"} :-"
+            "Download/${Constant.APP_NAME}/${if (isVideo) Constant.VIDEO_FOLDER else Constant.IMAGE_FOLDER}"
+        binding.tvSubTitle.text = "Recovered ${if (isVideo) "Videos" else "Photos"} details"
+        binding.tvRecoveredTitle.text = "-: Recovered ${if (isVideo) "Videos" else "Photos"} :-"
 
-        val fileAdapter = if (isImage) RecoverImageAdapter(this) else RecoverVideoAdapter(this)
+        val fileAdapter = if (isVideo) RecoverVideoAdapter(this) else RecoverImageAdapter(this)
         fileAdapter.submitList(fileList)
         binding.rvResult.adapter = fileAdapter
     }

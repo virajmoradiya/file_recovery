@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
     android:drawable="@drawable/img_splash"
-    android:insetLeft="75dp"
-    android:insetRight="75dp"
-    android:insetTop="75dp"
-    android:insetBottom="75dp"/>
+    android:insetLeft="@dimen/_47sdp"
+    android:insetRight="@dimen/_47sdp"
+    android:insetTop="@dimen/_47sdp"
+    android:insetBottom="@dimen/_47sdp"/>

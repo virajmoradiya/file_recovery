@@ -10,15 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.airbnb.lottie.LottieAnimationView
 import photo.video.recovery.R
 import photo.video.recovery.databinding.ActivityShowScanVideoBinding
 import photo.video.recovery.extension.getCompactColor
 import photo.video.recovery.extension.getCompactDrawable
-import photo.video.recovery.extension.gone
 import photo.video.recovery.extension.startActivity
 import photo.video.recovery.extension.toast
-import photo.video.recovery.extension.visible
 import photo.video.recovery.model.FileModel
 import photo.video.recovery.ui.recovered.RecoveredActivity
 import photo.video.recovery.ui.scanVideo.ScanVideoViewModel
@@ -29,6 +26,7 @@ import com.robinhood.ticker.TickerUtils
 import com.robinhood.ticker.TickerView
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import photo.video.recovery.utils.Constant.recoveryFileList
 
 class ShowScanVideoActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -98,7 +96,9 @@ class ShowScanVideoActivity : AppCompatActivity(), View.OnClickListener {
                         is Resources.Success -> {
                             progressDialog.dismiss()
                             if (data.data!!) {
-                                startActivity<RecoveredActivity> { putExtra("fileList", Gson().toJson(videoAdapter.currentList.filter { it.isSelected })) }
+                                recoveryFileList.clear()
+                                recoveryFileList.addAll(videoAdapter.currentList.filter { it.isSelected })
+                                startActivity<RecoveredActivity> {  }
                                 toast("Video recover successfully")
                                 lifecycleScope.launch {
                                     delay(1500)
@@ -142,6 +142,9 @@ class ShowScanVideoActivity : AppCompatActivity(), View.OnClickListener {
         background =
             getCompactDrawable(if (isEnabled) R.drawable.back_active_stroke else R.drawable.back_inactive_stroke)
     }
+
+
+
 
 }
 
