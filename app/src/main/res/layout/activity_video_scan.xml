@@ -88,4 +88,22 @@
         app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView"
         app:ticker_animationDuration="500" />
 
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_semi_bold"
+        android:text="Back To Home"
+        app:cornerRadius="12dp"
+        android:id="@+id/btnBackToHome"
+        android:visibility="gone"
+        android:includeFontPadding="false"
+        android:insetTop="2dp"
+        android:insetBottom="2dp"
+        android:layout_margin="@dimen/_12sdp"
+        android:backgroundTint="@color/highlightColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvScanPath" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

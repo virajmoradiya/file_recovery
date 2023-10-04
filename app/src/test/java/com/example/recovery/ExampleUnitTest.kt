@@ -1,4 +1,4 @@
-package com.example.recovery
+package photo.video.recovery
 
 import org.junit.Test
 

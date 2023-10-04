@@ -2,11 +2,15 @@
 
 plugins {
     id("com.android.application")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.firebase-perf")
+    id("com.google.firebase.crashlytics")
     kotlin("android")
+
 }
 
 android {
-    namespace = "com.example.recovery"
+    namespace = "photo.video.recovery"
     compileSdk = 34
 
     buildFeatures {
@@ -14,7 +18,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.recovery"
+        applicationId = "photo.video.recovery"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -91,16 +95,22 @@ dependencies {
     implementation("com.github.crimson0829:AdvancedTabLayout:1.6")
 
     //Lottie-animation
-    implementation ("com.airbnb.android:lottie:6.0.1")
+    implementation("com.airbnb.android:lottie:6.0.1")
 
     //permissions
-    implementation ("com.github.fondesa:kpermissions:3.4.0")
-    implementation ("com.github.fondesa:kpermissions-coroutines:3.4.0")
+    implementation("com.github.fondesa:kpermissions:3.4.0")
+    implementation("com.github.fondesa:kpermissions-coroutines:3.4.0")
 
     //rating & In-app update
     implementation("com.google.android.play:review-ktx:2.0.1")
     implementation("com.google.android.play:app-update-ktx:2.1.0")
 
-
+    //firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.firebase:firebase-messaging-ktx")
+    implementation("com.google.firebase:firebase-crashlytics-ktx")
+    implementation("com.google.firebase:firebase-perf-ktx")
 
 }
