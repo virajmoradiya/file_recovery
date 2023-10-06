@@ -8,10 +8,5 @@ import kotlinx.coroutines.launch
 
 class SplashViewModel :ViewModel() {
     val isReadyForExit = MutableStateFlow(true)
-    init {
-        viewModelScope.launch {
-            delay(1000)
-            isReadyForExit.tryEmit(false)
-        }
-    }
+
 }

@@ -14,6 +14,14 @@ import android.view.View
 import android.view.WindowManager
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import com.fondesa.kpermissions.allGranted
+import com.fondesa.kpermissions.anyPermanentlyDenied
+import com.fondesa.kpermissions.anyShouldShowRationale
+import com.fondesa.kpermissions.extension.permissionsBuilder
+import com.google.firebase.FirebaseApp
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import photo.video.recovery.R
 import photo.video.recovery.databinding.ActivityDashboardBinding
 import photo.video.recovery.databinding.DialogExitBinding
@@ -28,11 +36,8 @@ import photo.video.recovery.ui.scanImage.activity.ImageScanActivity
 import photo.video.recovery.ui.scanVideo.activity.VideoScanActivity
 import photo.video.recovery.ui.settings.SettingActivity
 import photo.video.recovery.utils.Constant
+import photo.video.recovery.utils.Constant.isAppHaveUpdate
 import photo.video.recovery.utils.InAppUpdate
-import com.fondesa.kpermissions.allGranted
-import com.fondesa.kpermissions.anyPermanentlyDenied
-import com.fondesa.kpermissions.anyShouldShowRationale
-import com.fondesa.kpermissions.extension.permissionsBuilder
 
 
 class DashboardActivity : AppCompatActivity(), View.OnClickListener {
@@ -56,6 +61,18 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
 
         intiView()
+        analyticsFirebase()
+
+        if (isAppHaveUpdate) {
+            inAppUpdate.startAppUpdate()
+        }
+    }
+
+    private fun analyticsFirebase() {
+        FirebaseApp.initializeApp(this)
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+        FirebaseAnalytics.getInstance(this)
+        FirebaseCrashlytics.getInstance()
     }
 
     private fun intiView() {
@@ -196,15 +213,14 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        inAppUpdate.onResume()
-    }
 
     override fun onDestroy() {
         super.onDestroy()
         inAppUpdate.onDestroy()
     }
+
+
+
 
 
 }

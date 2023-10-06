@@ -15,7 +15,9 @@ import photo.video.recovery.utils.Constant
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import photo.video.recovery.extension.addBounceAnim
 import photo.video.recovery.extension.isVideoFile
+import photo.video.recovery.ui.dashboard.DashboardActivity
 
 class RecoveredActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -48,6 +50,12 @@ class RecoveredActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun initView() {
+
+        binding.ivHome.addBounceAnim()
+        binding.ivHome.setOnClickListener {
+            startActivity<DashboardActivity> { }
+            finish()
+        }
 
         binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
 

@@ -6,7 +6,6 @@ plugins {
     id("com.google.firebase.firebase-perf")
     id("com.google.firebase.crashlytics")
     kotlin("android")
-
 }
 
 android {
@@ -29,11 +28,8 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"),"proguard-rules.pro")
         }
 
     }
@@ -65,7 +61,6 @@ dependencies {
 
     //gson
     implementation("com.google.code.gson:gson:2.10.1")
-
 
     //mvvm,coroutine,lifecycle
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")

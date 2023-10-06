@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 
+import photo.video.recovery.extension.UtilsKt;
 import photo.video.recovery.model.FileModel;
 
 import java.io.File;
@@ -39,7 +40,7 @@ public class ScanImage {
                 BitmapFactory.decodeFile(value.getPath(), options);
                 if (!(options.outWidth == -1 || options.outHeight == -1)) {
                     File file = new File(value.getPath());
-                    if (file.getName().endsWith(".png") || file.getName().endsWith(".jpg") || file.getName().endsWith(".jpeg") || file.getName().endsWith(".gif")) {
+                    if (UtilsKt.isImageOrGifFile(file)) {
                         arrFileScan.add(new FileModel(file, false,null,null,null));
                         number++;
                         listener.onImageScan(number);
@@ -72,7 +73,7 @@ public class ScanImage {
                 BitmapFactory.decodeFile(value.getPath(), options);
                 if (!(options.outWidth == -1 || options.outHeight == -1)) {
                     File file = new File(value.getPath());
-                    if (file.getName().endsWith(".png") || file.getName().endsWith(".jpg") || file.getName().endsWith(".jpeg") || file.getName().endsWith(".gif")) {
+                    if (UtilsKt.isImageOrGifFile(file)) {
                         arrFileScan.add(new FileModel(file, false,null,null,null));
                         number++;
                         listener.onImageScan(number);

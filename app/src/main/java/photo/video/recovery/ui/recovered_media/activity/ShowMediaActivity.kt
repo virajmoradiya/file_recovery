@@ -1,16 +1,19 @@
 package photo.video.recovery.ui.recovered_media.activity
 
-import android.media.MediaPlayer.OnPreparedListener
 import android.net.Uri
 import android.os.Bundle
+import android.widget.MediaController
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import photo.video.recovery.databinding.ActivityShowMediaBinding
+import photo.video.recovery.extension.addBounceAnim
 import photo.video.recovery.extension.isImageOrGifFile
+import photo.video.recovery.extension.startActivity
 import photo.video.recovery.extension.visible
+import photo.video.recovery.ui.dashboard.DashboardActivity
 import java.io.File
-
 
 class ShowMediaActivity : AppCompatActivity() {
 
@@ -18,7 +21,7 @@ class ShowMediaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityShowMediaBinding.inflate(layoutInflater)
+        binding = ActivityShowMediaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initToolbar()
@@ -32,6 +35,8 @@ class ShowMediaActivity : AppCompatActivity() {
             }
         })
         binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
+
+
     }
 
     private fun initView() {
@@ -47,10 +52,33 @@ class ShowMediaActivity : AppCompatActivity() {
             binding.toolbar.title = "Video"
             binding.videoView.visible()
 
+            val mc = MediaController(this@ShowMediaActivity)
+            mc.setAnchorView(binding.videoView)
+            mc.setMediaPlayer(binding.videoView)
+            binding.videoView.setMediaController(mc)
             binding.videoView.setVideoURI(Uri.fromFile(file))
-            binding.videoView.setOnPreparedListener { mp ->
-                mp.isLooping = true
-                binding.videoView.start()
+            binding.videoView.start()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (binding.videoView.isVisible)
+            binding.videoView.resume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (binding.videoView.isVisible)
+            binding.videoView.pause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.videoView.apply {
+            if (isVisible) {
+                pause()
+                stopPlayback()
             }
         }
     }

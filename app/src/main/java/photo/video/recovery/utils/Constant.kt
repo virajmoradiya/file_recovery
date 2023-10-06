@@ -10,4 +10,9 @@ object Constant {
 
 
     val recoveryFileList = mutableListOf<FileModel>()
+
+    //for app data
+    var isFlexibleUpdate = true
+    var isAppHaveUpdate = true
+
 }

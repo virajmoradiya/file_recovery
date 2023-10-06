@@ -3,10 +3,12 @@ package photo.video.recovery.extension
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
+import android.net.ConnectivityManager
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import java.io.File
+
 
 internal fun Context.getCompactColor(color: Int):Int= ContextCompat.getColor(this,color)
 
@@ -32,4 +34,10 @@ internal fun Context.hasPermissions(permissionList: MutableList<String>): Boolea
         }
     }
     return hasAllPermissions
+}
+
+internal fun Context.isNetworkAvailable(): Boolean {
+    val activeNetworkInfo =
+        (getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo
+    return activeNetworkInfo != null && activeNetworkInfo.isConnected
 }

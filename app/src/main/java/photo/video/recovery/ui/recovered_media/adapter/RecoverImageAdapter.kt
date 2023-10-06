@@ -27,7 +27,6 @@ class RecoverImageAdapter(private val listener:View.OnClickListener?=null) : Lis
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.binding.apply {
             val item = currentList[holder.adapterPosition]
-            Log.i("acac", "onBindViewHolder: "+item.file.name)
             ivImage.loadImageFile(item.file){
                 ivDefaultImage.gone()
             }

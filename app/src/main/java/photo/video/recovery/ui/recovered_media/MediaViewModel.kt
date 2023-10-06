@@ -40,10 +40,6 @@ class MediaViewModel : ViewModel() {
             val videoList = videoFolder.listFiles()?.toMutableList()?.filter { it.isVideoFile() }
                 ?.map { FileModel(it) }
 
-            Log.i("acac", "getMediaData: "+photoFolder.absolutePath)
-            Log.i("acac", "getMediaData: "+imageList?.size)
-            Log.i("acac", "getMediaData: "+videoFolder.absolutePath)
-            Log.i("acac", "getMediaData: "+videoList?.size)
             _imageMutableStateFlow.tryEmit(Resources.Success(imageList?.toMutableList()))
             _videoMutableStateFlow.tryEmit(Resources.Success(videoList?.toMutableList()))
         }

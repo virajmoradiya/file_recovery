@@ -28,15 +28,19 @@
             android:exported="false" />
         <activity
             android:name=".ui.scanImage.activity.ImageScanActivity"
+            android:noHistory="true"
             android:exported="false" />
         <activity
             android:name=".ui.scanImage.activity.ShowScanImageActivity"
+            android:noHistory="true"
             android:exported="false" />
         <activity
             android:name=".ui.scanVideo.activity.VideoScanActivity"
+            android:noHistory="true"
             android:exported="false" />
         <activity
             android:name=".ui.scanVideo.activity.ShowScanVideoActivity"
+            android:noHistory="true"
             android:exported="false" />
         <activity
             android:name=".ui.splash.SplashActivity"
