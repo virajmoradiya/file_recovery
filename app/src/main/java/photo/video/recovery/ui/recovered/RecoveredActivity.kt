@@ -68,7 +68,7 @@ class RecoveredActivity : AppCompatActivity(), View.OnClickListener {
 
         val noPhotos = "Number of ${if (isVideo) "Videos" else "Photos"} :"
         binding.txtNoPhotos.text = noPhotos
-        binding.tvFileCount.text = fileList.size.toString()
+        binding.tvFileCount.text = " ${fileList.size}"
         binding.tvFolderPath.text =
             "Download/${Constant.APP_NAME}/${if (isVideo) Constant.VIDEO_FOLDER else Constant.IMAGE_FOLDER}"
         binding.tvSubTitle.text = "Recovered ${if (isVideo) "Videos" else "Photos"} details"

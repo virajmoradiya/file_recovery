@@ -17,6 +17,7 @@ import photo.video.recovery.ui.scanVideo.ScanVideoViewModel
 import photo.video.recovery.utils.Resources
 import com.robinhood.ticker.TickerUtils
 import kotlinx.coroutines.launch
+import photo.video.recovery.extension.visible
 
 class VideoScanActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -56,6 +57,7 @@ class VideoScanActivity : AppCompatActivity(), View.OnClickListener {
                             binding.tvTapOnStartScan.isEnabled = false
                             binding.tvTapOnStartScan.text = "Sorry! No videos found"
                             binding.tvScanPath.invisible()
+                            binding.btnBackToHome.visible()
                         }
                     }
                 }

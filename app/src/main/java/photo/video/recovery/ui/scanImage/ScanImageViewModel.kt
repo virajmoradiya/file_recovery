@@ -3,19 +3,21 @@ package photo.video.recovery.ui.scanImage
 import android.os.Environment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import photo.video.recovery.extension.isImageOrGifFile
-import photo.video.recovery.model.FileModel
-import photo.video.recovery.utils.Constant
-import photo.video.recovery.utils.Resources
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
+import photo.video.recovery.extension.isImageOrGifFile
+import photo.video.recovery.model.FileModel
+import photo.video.recovery.utils.Constant
+import photo.video.recovery.utils.Resources
 import java.io.File
 import java.io.FileInputStream
+import java.io.FileNotFoundException
 import java.io.FileOutputStream
-import java.nio.channels.FileChannel
+import java.io.InputStream
+import java.io.OutputStream
 import java.util.Stack
 
 
@@ -24,7 +26,7 @@ class ScanImageViewModel : ViewModel() {
         var imageList = mutableListOf<FileModel>()
     }
 
-    private val _scanPathMutableStateFlow = MutableStateFlow<String>("")
+    private val _scanPathMutableStateFlow = MutableStateFlow("")
     val scanPathSharedFlow = _scanPathMutableStateFlow.asSharedFlow()
 
     private val _scanImageMutableStateFlow =
@@ -70,7 +72,7 @@ class ScanImageViewModel : ViewModel() {
             if (stack.isEmpty()) {
                 delay(500)
                 imageList.clear()
-                imageList.addAll(scanImageList)
+                imageList.addAll( scanImageList.sortedByDescending { it.file.lastModified() })
                 delay(500)
                 if (imageList.isEmpty())
                     _scanImageMutableStateFlow.tryEmit(Resources.Error("", imageList))
@@ -87,20 +89,34 @@ class ScanImageViewModel : ViewModel() {
             delay(1000)
             for (fileModel in list) {
                 try {
-                    val folder = File(
+                   val folder = File(
                         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
                         Constant.APP_NAME + "/" + Constant.IMAGE_FOLDER
                     )
                     if (!folder.exists()) {
                         folder.mkdirs()
                     }
-                    val destFile = File(folder.absolutePath + "/" + fileModel.file.name)
 
-                    val sourceFileChannel: FileChannel? = FileInputStream(fileModel.file).channel
-                    val destFileChannel: FileChannel? = FileOutputStream(destFile).channel
-                    sourceFileChannel?.transferTo(0, sourceFileChannel.size(), destFileChannel)
-                    sourceFileChannel?.close()
-                    destFileChannel?.close()
+                      val destFile = File(folder.absolutePath + "/" + fileModel.file.name)
+
+                    var inputStream: InputStream?
+                    var out: OutputStream?
+                    try {
+                        inputStream = FileInputStream(fileModel.file.absolutePath)
+                        out = FileOutputStream(destFile.absolutePath)
+                        val buffer = ByteArray(1024)
+                        var read: Int
+                        while (inputStream.read(buffer).also { read = it } != -1) {
+                            out.write(buffer, 0, read)
+                        }
+                        inputStream.close()
+                        out.flush()
+                        out.close()
+                    } catch (e: FileNotFoundException) {
+                        e.printStackTrace()
+                    } catch (e: java.lang.Exception) {
+                        e.printStackTrace()
+                    }
 
                 } catch (e: Exception) {
                     e.printStackTrace()

@@ -72,7 +72,7 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_semi_bold"
+        android:fontFamily="@font/nunito_bold"
         android:text="Back To Home"
         app:cornerRadius="12dp"
         android:id="@+id/btnBackToHome"

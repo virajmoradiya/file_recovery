@@ -20,8 +20,7 @@
     <string name="privacy_policy">Privacy Policy</string>
 
     <!--For add respected link-->
-    <string name="url_terms_condition">https://www.google.com/</string>
-    <string name="url_privacy_policy">https://www.google.com/</string>
+    <string name="url_privacy_policy">https://recover-deleted-photos-videos.blogspot.com/2023/10/privacy-policy.html</string>
     <string name="email">xyz@gmail.com</string>
     <string name="file_recovering">File recovering...</string>
     <string name="recovered_photos_details">Recovered Photos details</string>
@@ -30,5 +29,6 @@
     <string name="cancel">Cancel</string>
     <string name="yes">Yes</string>
     <string name="exit_app">Exit App</string>
+    <string name="loading_please_wait">Loading, please wait...</string>
 
 </resources>

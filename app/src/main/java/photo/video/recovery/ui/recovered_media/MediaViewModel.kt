@@ -40,8 +40,9 @@ class MediaViewModel : ViewModel() {
             val videoList = videoFolder.listFiles()?.toMutableList()?.filter { it.isVideoFile() }
                 ?.map { FileModel(it) }
 
-            _imageMutableStateFlow.tryEmit(Resources.Success(imageList?.toMutableList()))
-            _videoMutableStateFlow.tryEmit(Resources.Success(videoList?.toMutableList()))
+
+            _imageMutableStateFlow.tryEmit(Resources.Success( imageList?.sortedByDescending { it.file.lastModified() }?.toMutableList()))
+            _videoMutableStateFlow.tryEmit(Resources.Success(videoList?.sortedByDescending { it.file.lastModified() }?.toMutableList()))
         }
     }
 }

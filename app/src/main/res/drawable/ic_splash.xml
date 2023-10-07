@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:drawable="@drawable/img_splash"
-    android:insetLeft="@dimen/_53sdp"
-    android:insetRight="@dimen/_53sdp"
-    android:insetTop="@dimen/_53sdp"
-    android:insetBottom="@dimen/_53sdp"/>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/white" />
+    <item
+        >
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/img_splash" />
+    </item>
+</layer-list>

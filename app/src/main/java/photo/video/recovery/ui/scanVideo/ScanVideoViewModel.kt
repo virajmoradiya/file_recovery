@@ -14,7 +14,10 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileInputStream
+import java.io.FileNotFoundException
 import java.io.FileOutputStream
+import java.io.InputStream
+import java.io.OutputStream
 import java.nio.channels.FileChannel
 import java.util.Stack
 
@@ -70,7 +73,7 @@ class ScanVideoViewModel : ViewModel() {
             if (stack.isEmpty()) {
                 delay(500)
                 videoList.clear()
-                videoList.addAll(scanVideoList)
+                videoList.addAll(scanVideoList.sortedByDescending { it.file.lastModified() })
                 delay(500)
                 if (videoList.isEmpty())
                     _scanVideoMutableStateFlow.tryEmit(Resources.Error("", videoList))
@@ -96,11 +99,24 @@ class ScanVideoViewModel : ViewModel() {
                     }
                     val destFile = File(folder.absolutePath + "/" + fileModel.file.name)
 
-                    val sourceFileChannel: FileChannel? = FileInputStream(fileModel.file).channel
-                    val destFileChannel: FileChannel? = FileOutputStream(destFile).channel
-                    sourceFileChannel?.transferTo(0, sourceFileChannel.size(), destFileChannel)
-                    sourceFileChannel?.close()
-                    destFileChannel?.close()
+                    var inputStream: InputStream?
+                    var out: OutputStream?
+                    try {
+                        inputStream = FileInputStream(fileModel.file.absolutePath)
+                        out = FileOutputStream(destFile.absolutePath)
+                        val buffer = ByteArray(1024)
+                        var read: Int
+                        while (inputStream.read(buffer).also { read = it } != -1) {
+                            out.write(buffer, 0, read)
+                        }
+                        inputStream.close()
+                        out.flush()
+                        out.close()
+                    } catch (e: FileNotFoundException) {
+                        e.printStackTrace()
+                    } catch (e: java.lang.Exception) {
+                        e.printStackTrace()
+                    }
                 } catch (e: Exception) {
                     e.printStackTrace()
                     _recoverVideoMutableStateFlow.tryEmit(Resources.Success(false))
