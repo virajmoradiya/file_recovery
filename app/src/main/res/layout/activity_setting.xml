@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.settings.SettingActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_back"
+        app:title="Settings"
+        app:titleTextAppearance="@style/ToolbarTitleStyle" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSuggestion"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:drawableStart="@drawable/ic_feedback"
+        android:drawablePadding="@dimen/_12sdp"
+        android:fontFamily="@font/nunito_semi_bold"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_12sdp"
+        android:text="@string/suggestion"
+        android:textColor="@color/headerColor"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_14ssp"
+        app:drawableTint="@color/iconColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvShare"
+        android:textColor="@color/headerColor"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_40sdp"
+        android:drawableStart="@drawable/ic_share"
+        android:drawablePadding="@dimen/_12sdp"
+        android:fontFamily="@font/nunito_semi_bold"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_12sdp"
+        android:text="@string/share"
+        android:textSize="@dimen/_14ssp"
+        app:drawableTint="@color/iconColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSuggestion" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvRateUs"
+        android:textColor="@color/headerColor"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:drawableStart="@drawable/ic_rate"
+        android:drawablePadding="@dimen/_12sdp"
+        android:fontFamily="@font/nunito_semi_bold"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_12sdp"
+        android:text="@string/rate_us"
+        android:textSize="@dimen/_14ssp"
+        app:drawableTint="@color/iconColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvShare" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPrivacy"
+        android:layout_width="0dp"
+        android:textColor="@color/headerColor"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:drawableStart="@drawable/ic_privacy_policy"
+        android:drawablePadding="@dimen/_12sdp"
+        android:fontFamily="@font/nunito_semi_bold"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_12sdp"
+        android:text="@string/privacy_policy"
+        android:textSize="@dimen/_14ssp"
+        app:drawableTint="@color/iconColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRateUs" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_semi_bold"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/_32sdp"
+        android:text="Version 1.0.0"
+        android:textSize="@dimen/_14ssp"
+        android:textColor="@color/color_gray_800"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+         />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

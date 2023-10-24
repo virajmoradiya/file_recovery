@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "762522385872",
+    "project_id": "deleted-photo-recovery-6a542",
+    "storage_bucket": "deleted-photo-recovery-6a542.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762522385872:android:705b9effaf5650a1dc8dd5",
+        "android_client_info": {
+          "package_name": "photo.video.recovery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoZT5geTW8ps_Aq3cYXLtjGT2IoWZhETE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762522385872:android:9dde16616f750df3dc8dd5",
+        "android_client_info": {
+          "package_name": "photo.video.recovery.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoZT5geTW8ps_Aq3cYXLtjGT2IoWZhETE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

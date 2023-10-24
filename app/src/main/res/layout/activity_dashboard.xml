@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.dashboard.DashboardActivity">
+
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_190sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/back_scan_bottom"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvSetting"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvSetting"
+        app:layout_constraintTop_toBottomOf="@+id/tvSetting"
+        app:layout_constraintVertical_bias="1.0">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/back_main_button"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="center"
+            android:text="@string/ads_space"
+            android:textColor="@color/headerColor"
+            android:textSize="@dimen/_15ssp" />
+
+    </FrameLayout>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView5"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_50sdp"
+        android:fontFamily="@font/nunito_bold"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_16sdp"
+        android:text="@string/app_name"
+        android:textColor="@color/headerColor"
+        android:textSize="@dimen/_18ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvVideo"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:background="@drawable/back_main_button"
+        android:backgroundTint="@color/highlightColor"
+        android:drawableTop="@drawable/ic_play"
+        android:fontFamily="@font/nunito_bold"
+        android:gravity="bottom|center"
+        android:padding="@dimen/_8sdp"
+        android:text="@string/video"
+        android:textColor="@color/backgroundColor"
+        android:textSize="@dimen/_14ssp"
+        app:drawableTint="@color/backgroundColor"
+        app:layout_constraintBottom_toBottomOf="@+id/tvImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvImage"
+        app:layout_constraintTop_toTopOf="@+id/tvImage" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvRecoveredFile"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:elevation="5dp"
+        android:background="@drawable/back_main_button"
+        android:drawableStart="@drawable/ic_recoverd"
+        android:drawablePadding="@dimen/_12sdp"
+        android:fontFamily="@font/nunito_bold"
+        android:gravity="center_vertical"
+        android:padding="@dimen/_15sdp"
+        android:text="@string/recovered_file"
+        android:textColor="@color/headerColor"
+        android:textSize="@dimen/_14ssp"
+        app:drawableTint="@color/iconColor"
+        app:layout_constraintEnd_toEndOf="@+id/tvVideo"
+        app:layout_constraintStart_toStartOf="@+id/tvImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvImage" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSetting"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:elevation="5dp"
+        android:background="@drawable/back_main_button"
+        android:drawableStart="@drawable/ic_settings"
+        android:drawablePadding="@dimen/_12sdp"
+        android:fontFamily="@font/nunito_bold"
+        android:gravity="center_vertical"
+        android:padding="@dimen/_15sdp"
+        android:text="@string/setting"
+        android:textColor="@color/headerColor"
+        android:textSize="@dimen/_14ssp"
+        app:drawableTint="@color/iconColor"
+        app:layout_constraintEnd_toEndOf="@+id/tvVideo"
+        app:layout_constraintStart_toStartOf="@+id/tvImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecoveredFile" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvImage"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:background="@drawable/back_main_button"
+        android:backgroundTint="@color/highlightColor"
+        android:drawableTop="@drawable/ic_scan_image"
+        android:fontFamily="@font/nunito_bold"
+        android:gravity="bottom|center"
+        android:includeFontPadding="false"
+        android:padding="@dimen/_8sdp"
+        android:text="@string/photo"
+        android:textColor="@color/backgroundColor"
+        android:textSize="@dimen/_14ssp"
+        app:drawableTint="@color/backgroundColor"
+        app:layout_constraintEnd_toStartOf="@+id/tvVideo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.scanVideo.activity.VideoScanActivity">
+
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_225sdp"
+        android:background="@drawable/back_scan_bottom"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvScanPath"
+        app:layout_constraintVertical_bias="1.0">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="center"
+            android:text="Ads space"
+            android:textSize="@dimen/_15ssp" />
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvScanPath"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:ellipsize="middle"
+        android:fontFamily="@font/nunito_reguler"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:textColor="@color/headerColor"
+        android:textSize="@dimen/_11ssp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTapOnStartScan" />
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_back"
+        app:title="Scan Video"
+        app:titleTextAppearance="@style/ToolbarTitleStyle" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationView"
+        android:layout_width="@dimen/_140sdp"
+        android:layout_height="@dimen/_140sdp"
+        android:layout_marginTop="@dimen/_24sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/file_scanning_anim" />
+
+
+    <com.robinhood.ticker.TickerView
+        android:id="@+id/tvTapOnStartScan"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/nunito_reguler"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="@string/tap_to_start_scanning"
+        android:textColor="@color/headerColor"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView"
+        app:layout_constraintStart_toStartOf="@+id/lottieAnimationView"
+        app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView"
+        app:ticker_animationDuration="500" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Back To Home"
+        app:cornerRadius="12dp"
+        android:id="@+id/btnBackToHome"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.0"
+        android:insetTop="2dp"
+        android:visibility="gone"
+        android:insetBottom="2dp"
+        android:layout_margin="@dimen/_12sdp"
+        android:backgroundTint="@color/highlightColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvScanPath" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
