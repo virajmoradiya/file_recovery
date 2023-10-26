@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.dashboard.PermissionActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_margin="@dimen/_8sdp"
+        android:padding="@dimen/_10sdp"
+        android:id="@+id/ivClose"
+        app:tint="@color/color_gray_800"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_cancel" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_margin="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivClose"
+        app:srcCompat="@drawable/ic_permission" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_15sdp"
+        android:fontFamily="@font/nunito_bold"
+        android:gravity="start|center"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="@dimen/_minus2sdp"
+        android:text="@string/permission_is_required_to_access_all_files"
+        android:textColor="@color/headerColor"
+        android:textSize="@dimen/_16ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_15sdp"
+        android:fontFamily="@font/nunito_reguler"
+        android:gravity="start|center"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="@dimen/_minus2sdp"
+        android:text="@string/file_recovery_all_recovery_requires_full_access_to_your_device_storage_to_search_for_lost_or_deleted_files"
+        android:textColor="@color/headerColor"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView8" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_24sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:fontFamily="@font/nunito_reguler"
+        android:gravity="start"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="@dimen/_minus2sdp"
+        android:text="@string/we_will_never_share_upload_or_send_your_data_without_your_permission"
+        android:textColor="@color/headerColor"
+        android:textSize="@dimen/_8ssp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAllow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAllow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_15sdp"
+        android:backgroundTint="@color/highlightColor"
+        android:fontFamily="@font/nunito_bold"
+        android:includeFontPadding="false"
+        android:insetTop="2dp"
+        android:insetBottom="2dp"
+        android:letterSpacing="0.0"
+        android:paddingVertical="@dimen/_12sdp"
+        android:text="@string/allow"
+        android:textSize="@dimen/_12ssp"
+        app:cornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="@color/highlightColor" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

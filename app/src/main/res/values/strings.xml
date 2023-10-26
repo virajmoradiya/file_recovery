@@ -30,5 +30,9 @@
     <string name="yes">Yes</string>
     <string name="exit_app">Exit App</string>
     <string name="loading_please_wait">Loading, please wait...</string>
+    <string name="file_recovery_all_recovery_requires_full_access_to_your_device_storage_to_search_for_lost_or_deleted_files">File Recovery - All Recovery requires full access to your device storage to search for lost or deleted files.</string>
+    <string name="allow">ALLOW</string>
+    <string name="permission_is_required_to_access_all_files">Permission is required to access all files</string>
+    <string name="we_will_never_share_upload_or_send_your_data_without_your_permission">We will never share, upload, or send your data without your permission.</string>
 
 </resources>
